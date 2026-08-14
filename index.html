@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="钟凡的个人简历与作品集网站，关注内容运营、产品运营与 AI 工具应用。">
+  <title>钟凡｜内容运营 · 产品运营</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><circle cx=%2232%22 cy=%2232%22 r=%2228%22 fill=%22%23b8e8d4%22/><text x=%2232%22 y=%2239%22 text-anchor=%22middle%22 font-size=%2222%22 font-family=%22Arial%22 font-weight=%22700%22>ZF</text></svg>">
+  <style>
+:root {
+  --bg: #fff;
+  --soft: #f7f8f6;
+  --ink: #171916;
+  --muted: #636761;
+  --line: #dfe2dc;
+  --mint: #b8e8d4;
+  --mint-dark: #78cfa8;
+  --purple: #9b87d9;
+  --coral: #ffb4a2;
+  --sky: #dbeafe;
+  --lemon: #fef4a8;
+  --lavender: #e8e1fc;
+  --dark: #202721;
+  --shadow: 0 12px 32px rgba(24, 31, 25, .08);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body { margin: 0; color: var(--ink); background: var(--bg); font-family: Inter, -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; line-height: 1.75; }
+button, textarea { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+a { color: inherit; text-decoration: none; }
+.shell { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
+.section { padding: 112px 0; }
+.section-soft { background: var(--soft); }
+.site-header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.94); border-bottom: 1px solid var(--line); backdrop-filter: blur(14px); }
+.nav { min-height: 70px; display: flex; align-items: center; justify-content: space-between; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 800; }
+.brand-mark { width: 38px; height: 38px; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 50%; font-size: 12px; position: relative; }
+.brand-mark::after { content: ""; position: absolute; inset: -5px -3px -3px -5px; border: 1px solid var(--mint-dark); border-radius: 46% 54% 48% 52%; transform: rotate(-8deg); }
+.nav-links { display: flex; gap: 4px; align-items: center; }
+.nav-links a { padding: 7px 15px; border-radius: 999px; color: var(--muted); font-size: 14px; transition: .2s ease; }
+.nav-links a:hover { background: var(--soft); color: var(--ink); }
+.nav-links a.active { color: white; background: var(--ink); }
+.menu-toggle { display: none; border: 0; background: transparent; padding: 8px; }
+.menu-toggle span { display: block; width: 22px; height: 2px; margin: 4px; background: var(--ink); }
+
+.hero { min-height: calc(100vh - 70px); padding-top: 100px; display: grid; grid-template-columns: 1.08fr .92fr; gap: 58px 72px; align-items: center; }
+.eyebrow, .section-kicker { color: var(--purple); font-weight: 800; font-size: 12px; letter-spacing: 1.2px; }
+h1, h2, h3, h4, p { margin-top: 0; }
+h1 { margin-bottom: 10px; font-size: clamp(44px, 6vw, 72px); line-height: 1.08; letter-spacing: 0; }
+.role { margin-bottom: 24px; color: var(--purple); font-size: 27px; font-weight: 700; line-height: 1.3; }
+.intro { max-width: 600px; color: var(--muted); font-size: 16px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin: 32px 0 24px; }
+.button { min-height: 48px; padding: 0 24px; border: 0; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-weight: 700; cursor: pointer; transition: transform .2s ease, background .2s ease; }
+.button:hover { transform: translateY(-2px); }
+.button-outline { border: 1.5px solid var(--ink); }
+.button-outline:hover { background: var(--soft); }
+.button-mint { background: var(--mint); }
+.button-mint:hover { background: var(--mint-dark); }
+.button-dark { color: white; background: var(--ink); flex: 0 0 auto; }
+.quick-facts { display: flex; flex-wrap: wrap; gap: 8px; }
+.quick-facts span, .tags span { padding: 5px 12px; border-radius: 999px; background: var(--soft); color: var(--muted); font-size: 12px; }
+.portrait-wrap { width: min(100%, 420px); aspect-ratio: 4 / 5; justify-self: end; position: relative; }
+.portrait-placeholder { position: absolute; inset: 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #eef4ef; clip-path: polygon(5% 1%, 94% 4%, 99% 94%, 8% 100%, 1% 48%); color: #68726b; }
+.portrait-photo { position: absolute; inset: 18px; width: calc(100% - 36px); height: calc(100% - 36px); object-fit: cover; object-position: center 38%; clip-path: polygon(5% 1%, 94% 4%, 99% 94%, 8% 100%, 1% 48%); }
+.portrait-placeholder strong { font-size: 28px; color: var(--ink); }
+.portrait-placeholder small { font-size: 10px; letter-spacing: 1.5px; }
+.placeholder-index { position: absolute; top: 22px; left: 24px; font-weight: 800; }
+.portrait-outline { position: absolute; inset: 4px 0 0 6px; border: 4px solid var(--mint-dark); border-radius: 48% 52% 46% 54% / 3% 5% 4% 6%; transform: rotate(-1.8deg); }
+.portrait-note { position: absolute; right: -16px; bottom: 24px; padding: 7px 12px; background: var(--lemon); font-size: 11px; font-weight: 700; transform: rotate(-2deg); }
+.matcher { grid-column: 1 / -1; border: 1px solid var(--line); border-radius: 8px; padding: 26px; box-shadow: var(--shadow); }
+.matcher-head { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; }
+.matcher h2 { margin: 3px 0 0; font-size: 22px; }
+.local-badge { border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; color: var(--muted); font-size: 11px; }
+.matcher label { display: block; margin-bottom: 7px; color: var(--muted); font-size: 12px; font-weight: 700; }
+.matcher-input-row { display: flex; gap: 14px; align-items: stretch; }
+textarea { width: 100%; resize: vertical; min-height: 86px; padding: 13px 15px; border: 1px solid var(--line); border-radius: 8px; color: var(--ink); background: var(--soft); outline: none; }
+textarea:focus { border-color: var(--mint-dark); box-shadow: 0 0 0 3px rgba(125,211,172,.2); }
+
+.section-heading { display: flex; justify-content: space-between; gap: 48px; align-items: end; margin-bottom: 48px; }
+.section-heading h2 { margin: 5px 0 0; font-size: clamp(34px, 4vw, 48px); line-height: 1.2; }
+.section-heading > p { max-width: 460px; margin-bottom: 6px; color: var(--muted); }
+.education-layout { display: grid; grid-template-columns: 1.55fr .85fr; gap: 64px; }
+.timeline { position: relative; }
+.timeline::before { content: ""; position: absolute; top: 9px; bottom: 20px; left: 6px; width: 2px; background: var(--line); }
+.timeline-item { position: relative; padding: 0 0 32px 35px; }
+.timeline-dot { position: absolute; left: 0; top: 8px; width: 14px; height: 14px; border: 3px solid var(--mint-dark); border-radius: 50%; background: white; }
+.timeline-dot.coral { border-color: var(--coral); }
+.timeline-card { padding: 25px 28px; background: white; border: 1px solid var(--line); border-radius: 8px; transition: .2s ease; }
+.timeline-card:hover, .project-feature:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.item-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+.item-top h3 { margin-bottom: 4px; font-size: 21px; }
+.item-top time { flex: 0 0 auto; color: #8b908a; font-size: 13px; }
+.item-role { margin-bottom: 14px; color: var(--purple); font-weight: 700; }
+.tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.tags span:nth-child(4n+1) { background: var(--sky); color: #315991; }
+.tags span:nth-child(4n+2) { background: #d9f3e7; color: #21664c; }
+.tags span:nth-child(4n+3) { background: var(--lavender); color: #5a468f; }
+.tags span:nth-child(4n+4) { background: var(--lemon); color: #755f13; }
+.honors { background: var(--dark); color: white; padding: 28px; border-radius: 8px; }
+.honors-title span { color: var(--mint); font-size: 11px; letter-spacing: 1.5px; }
+.honors-title h3 { margin: 4px 0 22px; font-size: 23px; }
+.honors ul { margin: 0; padding: 0; list-style: none; }
+.honors li { display: grid; grid-template-columns: 92px 1fr; gap: 12px; padding: 13px 0; border-top: 1px solid rgba(255,255,255,.14); font-size: 13px; }
+.honors li b { color: var(--mint); }
+
+.experience-list { border-top: 1px solid var(--line); }
+.experience-card { position: relative; display: grid; grid-template-columns: 64px 1fr auto; gap: 28px; padding: 38px 0; border-bottom: 1px solid var(--line); }
+.experience-card.featured { margin: 0 -28px; padding: 38px 28px; background: #f7fbf8; border: 1px solid #d8e8df; border-radius: 8px; }
+.experience-index { color: var(--mint-dark); font-size: 12px; font-weight: 800; }
+.experience-main > p { max-width: 780px; color: var(--muted); }
+.result-strip { display: flex; align-items: baseline; gap: 10px; margin: 20px 0; padding: 14px 18px; background: white; border-left: 4px solid var(--mint-dark); }
+.result-strip strong { font-size: 26px; line-height: 1; }
+.result-strip span { margin-right: 20px; color: var(--muted); font-size: 12px; }
+.text-link { padding: 0; border: 0; background: transparent; color: var(--ink); font-weight: 700; cursor: pointer; white-space: nowrap; }
+.text-link span { display: inline-block; transition: .2s ease; }
+.text-link:hover span { transform: translate(3px, -2px); }
+
+.section-dark { background: var(--dark); color: white; }
+.section-heading.light > p { color: #b7bdb8; }
+.skill-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.skill-card { min-height: 220px; padding: 28px; border: 1px solid rgba(255,255,255,.13); border-radius: 8px; background: #283029; }
+.skill-number { color: var(--mint); font-size: 11px; }
+.skill-card h3 { margin: 18px 0 12px; font-size: 23px; }
+.skill-card p { max-width: 480px; color: #bdc3be; }
+.skill-line { height: 5px; margin-top: 28px; background: rgba(255,255,255,.12); overflow: hidden; border-radius: 99px; }
+.skill-line i { display: block; width: 0; height: 100%; background: var(--mint); transition: width 1s ease; }
+.cert-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.cert-row span { padding: 7px 13px; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; color: #d8ddd9; font-size: 12px; }
+
+.explore-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 64px; }
+.column-title { display: grid; grid-template-columns: 4px 1fr auto; gap: 12px; align-items: center; margin-bottom: 24px; }
+.column-title > span { width: 4px; height: 34px; background: var(--mint-dark); }
+.column-title.coral-title > span { background: var(--coral); }
+.column-title h3 { margin: 0; font-size: 23px; }
+.column-title small { color: #8c908c; letter-spacing: 1px; }
+.project-feature { overflow: hidden; border: 1px solid var(--line); border-radius: 8px; transition: .2s ease; }
+.project-media { aspect-ratio: 4 / 3; }
+.placeholder-media { display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--sky); position: relative; }
+.placeholder-media::before, .placeholder-media::after { content: ""; position: absolute; border: 2px solid rgba(26,26,26,.18); }
+.placeholder-media::before { width: 46%; height: 48%; transform: translate(-35px,-10px) rotate(-5deg); }
+.placeholder-media::after { width: 43%; height: 43%; transform: translate(42px,22px) rotate(6deg); }
+.placeholder-media span, .placeholder-media strong, .placeholder-media small { z-index: 1; }
+.placeholder-media span { font-size: 11px; letter-spacing: 1px; }
+.placeholder-media strong { margin: 10px 0 3px; font-size: 23px; }
+.placeholder-media small { color: var(--muted); }
+.project-copy { padding: 26px; }
+.project-label { color: var(--purple); font-size: 10px; font-weight: 800; letter-spacing: 1.2px; }
+.project-copy h3 { margin: 5px 0 8px; font-size: 22px; }
+.project-copy p { color: var(--muted); }
+.project-copy .text-link { margin-top: 20px; }
+.project-list { margin-top: 12px; border-top: 1px solid var(--line); }
+.project-row { width: 100%; display: grid; grid-template-columns: 42px 1fr auto; gap: 14px; align-items: center; padding: 18px 8px; text-align: left; border: 0; border-bottom: 1px solid var(--line); background: white; cursor: pointer; }
+.project-row > span { color: var(--mint-dark); font-size: 11px; }
+.project-row div { display: flex; flex-direction: column; }
+.project-row small { color: var(--muted); }
+.project-row i { font-style: normal; }
+.video-showcase { display: grid; gap: 18px; }
+.video-project { display: grid; grid-template-columns: minmax(190px, .9fr) 1fr; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: white; transition: .2s ease; }
+.video-project:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.video-frame { min-height: 270px; background: #181b19; display: grid; place-items: center; overflow: hidden; }
+.video-frame video { width: 100%; height: 100%; max-height: 360px; object-fit: contain; background: #181b19; }
+.video-frame:has(.video-load-button) { position: relative; }
+.video-load-button { position: absolute; left: 50%; bottom: 22px; z-index: 2; min-height: 42px; padding: 0 18px; border: 1px solid rgba(255,255,255,.45); border-radius: 999px; color: white; background: rgba(23,26,24,.86); cursor: pointer; }
+.video-load-button:hover { background: #171a18; }
+.video-load-button:disabled { cursor: wait; opacity: .75; }
+.video-frame-rotated { min-height: 0; aspect-ratio: 16 / 9; position: relative; }
+.video-frame-rotated video { position: absolute; left: 50%; top: 50%; width: 56.25%; height: 177.78%; max-width: none; max-height: none; transform: translate(-50%, -50%) rotate(-90deg); object-fit: contain; }
+.video-copy { padding: 24px; align-self: center; }
+.video-copy > span { color: var(--purple); font-size: 10px; font-weight: 800; letter-spacing: 1.2px; }
+.video-copy h3 { margin: 6px 0 8px; font-size: 21px; }
+.video-copy p { margin: 0; color: var(--muted); font-size: 13px; }
+.account-list { display: grid; gap: 14px; }
+.account-card { min-height: 150px; display: grid; grid-template-columns: 52px 1fr auto; gap: 18px; align-items: center; padding: 24px; border: 1px solid var(--line); border-radius: 8px; background: white; transition: .2s ease; }
+.account-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.account-card > b { font-size: 18px; transition: .2s ease; }
+.account-card:hover > b { transform: translate(3px, -3px); }
+.account-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; font-weight: 800; }
+.account-card.bilibili .account-icon { background: var(--sky); color: #2f699b; }
+.account-card.wechat .account-icon { background: #d9f3e7; color: #21664c; }
+.account-card.channels .account-icon { background: var(--lavender); color: #5a468f; }
+.account-card small { color: var(--purple); font-size: 9px; font-weight: 800; letter-spacing: 1px; }
+.account-card h3 { margin: 3px 0 4px; font-size: 18px; }
+.account-card p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.phone { width: min(100%, 350px); aspect-ratio: 9 / 18.3; margin: 0 auto; padding: 12px; background: #1d201e; border: 1px solid #3b403c; border-radius: 42px; box-shadow: var(--shadow); position: relative; }
+.phone-notch { position: absolute; z-index: 2; top: 20px; left: 50%; width: 110px; height: 24px; border-radius: 20px; transform: translateX(-50%); background: #1d201e; }
+.phone-screen { height: 100%; overflow: hidden; padding: 55px 18px 20px; background: #f5f4ef; border-radius: 32px; }
+.phone-header { display: flex; gap: 10px; align-items: center; margin-bottom: 22px; }
+.phone-header div { display: flex; flex-direction: column; line-height: 1.4; }
+.phone-header small { color: var(--muted); }
+.mini-avatar { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: var(--mint); font-weight: 800; }
+.note-card { margin-bottom: 13px; padding: 16px; background: white; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,.06); }
+.note-card > span { color: #327056; font-size: 10px; font-weight: 800; }
+.note-card h4 { margin: 7px 0; line-height: 1.5; }
+.note-card p { color: var(--muted); font-size: 12px; line-height: 1.7; }
+.note-card div { display: flex; justify-content: space-between; color: #8b8e8b; }
+.note-card.peach { background: #fff6f2; }
+
+.contact { padding: 80px 0; }
+.contact-inner { display: flex; justify-content: space-between; align-items: end; gap: 56px; }
+.contact h2 { max-width: 650px; margin: 6px 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.25; }
+.contact p { color: var(--muted); }
+.contact-links { min-width: 260px; display: flex; flex-direction: column; gap: 8px; border-left: 3px solid var(--mint-dark); padding-left: 20px; }
+.contact-links a { font-weight: 800; }
+footer { padding: 22px 0; background: var(--dark); color: #bfc5c0; font-size: 12px; }
+footer .shell { display: flex; justify-content: space-between; }
+
+.modal { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 24px; background: rgba(10,14,11,.48); backdrop-filter: blur(5px); opacity: 0; visibility: hidden; transition: .2s ease; }
+.modal.open { opacity: 1; visibility: visible; }
+.modal-panel { width: min(900px, 100%); max-height: min(86vh, 820px); overflow: auto; position: relative; padding: 40px; background: white; border-radius: 8px; transform: scale(.96); transition: .2s ease; }
+.modal.open .modal-panel { transform: scale(1); }
+.modal-close { position: sticky; float: right; top: 0; z-index: 2; width: 38px; height: 38px; border: 1px solid var(--line); border-radius: 50%; background: white; font-size: 24px; cursor: pointer; }
+.modal-panel h2 { margin: 6px 0 8px; font-size: 31px; }
+.modal-intro { max-width: 700px; color: var(--muted); }
+.modal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 28px 0; }
+.detail-block { padding: 20px; border-radius: 8px; }
+.detail-block:nth-child(4n+1) { background: var(--sky); }
+.detail-block:nth-child(4n+2) { background: #dff4e9; }
+.detail-block:nth-child(4n+3) { background: var(--lemon); }
+.detail-block h3 { font-size: 15px; }
+.detail-block p { margin: 0; color: var(--muted); font-size: 13px; }
+.modal-results { padding: 22px; border-left: 4px solid var(--mint-dark); background: var(--soft); }
+.modal-results > h3 { margin-bottom: 16px; }
+.modal-results[hidden] { display: none; }
+.result-description { max-width: 680px; margin-bottom: 18px; color: var(--muted); }
+.result-summary { display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: baseline; margin-bottom: 18px; }
+.result-summary strong { font-size: 24px; }
+.result-summary span { color: var(--muted); }
+.result-media { display: grid; gap: 14px; }
+.result-gallery { grid-template-columns: 1fr; }
+.result-media figure { margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: white; }
+.result-media img { display: block; width: 100%; height: auto; }
+.result-media video { display: block; width: 100%; max-height: 520px; object-fit: contain; background: #171a18; }
+.result-media figcaption { padding: 10px 12px; color: var(--muted); font-size: 12px; }
+.single-video { max-width: 480px; }
+.match-layout { display: grid; grid-template-columns: 190px 1fr; gap: 42px; align-items: center; margin: 32px 0; }
+.score-ring { width: 170px; height: 170px; display: flex; flex-direction: column; justify-content: center; align-items: center; border: 14px solid var(--mint); border-radius: 50%; }
+.score-ring strong { font-size: 48px; line-height: 1; }
+.score-ring span, .score-ring small { color: var(--muted); }
+.bar-row { display: grid; grid-template-columns: 75px 1fr 35px; gap: 12px; align-items: center; margin: 16px 0; font-size: 13px; }
+.bar-track { height: 8px; overflow: hidden; background: #edf0ed; border-radius: 99px; }
+.bar-fill { width: 0; height: 100%; background: var(--mint-dark); transition: width .8s ease; }
+.match-summary { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.match-summary > div { padding: 22px; border-radius: 8px; background: var(--soft); }
+.match-summary ul { padding-left: 20px; }
+.match-summary p, .match-summary li { color: var(--muted); }
+.empty-hint { padding: 50px 20px; text-align: center; background: var(--soft); border: 1px dashed #bfc4bf; }
+
+.reveal { opacity: 1; transform: none; }
+
+@media (max-width: 900px) {
+  .section { padding: 88px 0; }
+  .hero { grid-template-columns: 1fr 1fr; gap: 42px; }
+  .matcher { grid-column: 1 / -1; }
+  .education-layout, .explore-grid { grid-template-columns: 1fr; }
+  .honors { margin-left: 35px; }
+  .experience-card { grid-template-columns: 42px 1fr; }
+  .experience-card .details-button { grid-column: 2; justify-self: start; }
+  .modal-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 700px) {
+  .shell { width: min(100% - 32px, 1180px); }
+  .menu-toggle { display: block; }
+  .nav-links { position: absolute; top: 70px; left: 16px; right: 16px; display: none; flex-direction: column; align-items: stretch; padding: 10px; border: 1px solid var(--line); background: white; box-shadow: var(--shadow); }
+  .nav-links.open { display: flex; }
+  .nav-links a { text-align: center; }
+  .hero { display: flex; flex-direction: column; padding-top: 64px; }
+  .hero-copy { order: 1; }
+  .portrait-wrap { order: 2; justify-self: center; width: min(86vw, 370px); margin: 10px auto; }
+  .matcher { order: 3; width: 100%; }
+  h1 { font-size: 44px; }
+  .role { font-size: 22px; }
+  .matcher-input-row { flex-direction: column; }
+  .section-heading, .contact-inner { align-items: flex-start; flex-direction: column; gap: 16px; }
+  .education-layout { gap: 28px; }
+  .honors { margin-left: 0; }
+  .item-top { flex-direction: column; gap: 4px; }
+  .skill-grid { grid-template-columns: 1fr; }
+  .experience-card, .experience-card.featured { grid-template-columns: 1fr; margin: 0; padding: 30px 0; border-width: 0 0 1px; border-radius: 0; }
+  .experience-card .details-button { grid-column: 1; }
+  .result-strip { flex-wrap: wrap; }
+  .modal-panel { padding: 26px 20px; }
+  .modal-grid, .match-summary, .match-layout { grid-template-columns: 1fr; }
+  .score-ring { margin: 0 auto; }
+  .phone { width: min(92vw, 350px); }
+  .video-project { grid-template-columns: 1fr; }
+  .video-frame { min-height: 0; aspect-ratio: 9 / 12; }
+  .video-frame-rotated { aspect-ratio: 16 / 9; }
+  .account-card { grid-template-columns: 44px 1fr auto; padding: 18px; }
+  footer .shell { gap: 20px; flex-direction: column; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+
+</style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav shell" aria-label="主导航">
+      <a class="brand" href="#about" aria-label="返回首页">
+        <span class="brand-mark">ZF</span>
+        <span>钟凡</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="打开菜单" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a class="active" href="#about">关于我</a>
+        <a href="#education">教育背景</a>
+        <a href="#experience">工作经历</a>
+        <a href="#skills">技能特长</a>
+        <a href="#explore">学习与探索</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero shell section" id="about" data-section>
+      <div class="hero-copy reveal">
+        <p class="eyebrow">CONTENT · PRODUCT · AI</p>
+        <h1>Hi，我是钟凡</h1>
+        <p class="role">内容运营 / 产品运营</p>
+        <p class="intro">新闻与传播硕士在读，关注内容增长、用户洞察与 AI 产品。拥有医生 IP、新媒体账号及品牌内容运营经验，擅长把想法转化为清晰、有效且有传播力的内容。</p>
+        <div class="hero-actions">
+          <a class="button button-outline" href="assets/钟凡-个人简历.pdf" download>下载简历 <span aria-hidden="true">↓</span></a>
+          <a class="button button-mint" href="mailto:2323527549@qq.com">联系我 <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="quick-facts" aria-label="个人信息">
+          <span>重庆江北</span><span>2027 届硕士</span><span>内容与产品方向</span>
+        </div>
+      </div>
+
+      <div class="portrait-wrap reveal" aria-label="钟凡的生活照">
+        <div class="portrait-outline" aria-hidden="true"></div>
+        <img class="portrait-photo" src="assets/钟凡-生活照.JPG" alt="钟凡生活照">
+        <span class="portrait-note">CONTENT · PRODUCT · AI</span>
+      </div>
+
+      <div class="matcher reveal">
+        <div class="matcher-head">
+          <div>
+            <span class="section-kicker">AI JOB MATCH</span>
+            <h2>岗位匹配器</h2>
+          </div>
+          <span class="local-badge">本地分析</span>
+        </div>
+        <label for="job-description">粘贴岗位描述</label>
+        <div class="matcher-input-row">
+          <textarea id="job-description" rows="3" placeholder="例如：负责小红书内容运营、用户调研、AI 产品推广……"></textarea>
+          <button class="button button-dark" id="match-button" type="button">开始匹配 <span aria-hidden="true">→</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="education" data-section>
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div><span class="section-kicker">EDUCATION & HONORS</span><h2>教育背景</h2></div>
+          <p>从网络与新媒体到新闻与传播，持续建立内容策划、传播研究与实践能力。</p>
+        </div>
+        <div class="education-layout">
+          <div class="timeline">
+            <article class="timeline-item reveal">
+              <span class="timeline-dot"></span>
+              <div class="timeline-card">
+                <div class="item-top"><h3>四川外国语大学</h3><time>2024.09 — 2027.06</time></div>
+                <p class="item-role">新闻与传播 · 硕士</p>
+                <div class="tags"><span>传播研究</span><span>内容策划</span><span>用户洞察</span></div>
+              </div>
+            </article>
+            <article class="timeline-item reveal">
+              <span class="timeline-dot coral"></span>
+              <div class="timeline-card">
+                <div class="item-top"><h3>重庆工商大学派斯学院</h3><time>2019.09 — 2023.07</time></div>
+                <p class="item-role">网络与新媒体 · 本科</p>
+                <div class="tags"><span>新媒体运营</span><span>视频制作</span><span>新闻采写</span></div>
+              </div>
+            </article>
+          </div>
+          <aside class="honors reveal">
+            <div class="honors-title"><span>HONORS</span><h3>荣誉奖项</h3></div>
+            <ul>
+              <li><b>2024-2025</b><span>学年一等奖学金</span></li>
+              <li><b>研究生阶段</b><span>入学一等奖学金</span></li>
+              <li><b>2021-2022</b><span>第一学期三等奖学金</span></li>
+              <li><b>2021-2022</b><span>大学生广告艺术大赛重庆赛区优秀奖三项</span></li>
+              <li><b>2021</b><span>中国大学生广告艺术节学院奖入围</span></li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="experience" data-section>
+      <div class="section-heading reveal">
+        <div><span class="section-kicker">SELECTED EXPERIENCE</span><h2>工作经历</h2></div>
+        <p>聚焦内容生产、账号增长、用户研究与 AI 产品推广，把传播结果落到业务目标上。</p>
+      </div>
+      <div class="experience-list">
+        <article class="experience-card reveal">
+          <div class="experience-index">01</div>
+          <div class="experience-main">
+            <div class="item-top"><div><h3>绝绝智科技有限公司</h3><p class="item-role">内容运营 / 产品运营实习</p></div><time>2026.04 — 2026.08</time></div>
+            <p>围绕 AI 产品开展内容预热与多平台推广，并协助产品经理完成用户调研、需求挖取和反馈整理。</p>
+            <div class="tags"><span>AI 产品</span><span>内容预热</span><span>用户调研</span><span>需求洞察</span></div>
+          </div>
+          <button class="text-link details-button" type="button" data-detail="ai-product">查看详情 <span>↗</span></button>
+        </article>
+        <article class="experience-card reveal featured">
+          <div class="experience-index">02</div>
+          <div class="experience-main">
+            <div class="item-top"><div><h3>重庆松山医院</h3><p class="item-role">新媒体运营实习</p></div><time>2025.09 — 2026.03</time></div>
+            <p>独立运营医生 IP 视频号“逆糖胡主任”及微信公众号“逆糖胡渊”，以专业内容连接医生品牌与患者需求。</p>
+            <div class="result-strip"><strong>3w</strong><span>单篇最高浏览量</span><strong>2×</strong><span>科室门诊量增长</span></div>
+            <div class="tags"><span>医生 IP</span><span>视频号</span><span>公众号</span><span>内容增长</span></div>
+          </div>
+          <button class="text-link details-button" type="button" data-detail="doctor-ip">查看详情 <span>↗</span></button>
+        </article>
+        <article class="experience-card reveal">
+          <div class="experience-index">03</div>
+          <div class="experience-main">
+            <div class="item-top"><div><h3>波司登</h3><p class="item-role">新媒体运营实习</p></div><time>2023.03 — 2023.05</time></div>
+            <p>参与重庆小红书账号运营、KOL 合作管理、店员社媒社群管理，以及线下会员活动组织与视频拍摄。</p>
+            <div class="tags"><span>小红书</span><span>KOL 合作</span><span>社群运营</span><span>活动执行</span></div>
+          </div>
+          <button class="text-link details-button" type="button" data-detail="bosideng">查看详情 <span>↗</span></button>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="skills" data-section>
+      <div class="shell">
+        <div class="section-heading light reveal">
+          <div><span class="section-kicker">SKILLS & TOOLS</span><h2>技能特长</h2></div>
+          <p>内容能力、工具效率和沟通协作共同构成我的工作方法。</p>
+        </div>
+        <div class="skill-grid">
+          <article class="skill-card reveal"><span class="skill-number">01</span><h3>内容运营</h3><p>选题策划、文案撰写、账号运营、数据复盘、医生 IP 内容打造</p><div class="skill-line"><i data-level="92"></i></div></article>
+          <article class="skill-card reveal"><span class="skill-number">02</span><h3>影像制作</h3><p>摄影摄像、短视频制作、剪映、PS、PR、AE、XD</p><div class="skill-line"><i data-level="86"></i></div></article>
+          <article class="skill-card reveal"><span class="skill-number">03</span><h3>AI 与办公</h3><p>Codex、WorkBuddy、libTV，以及 Word、PPT、Excel</p><div class="skill-line"><i data-level="88"></i></div></article>
+          <article class="skill-card reveal"><span class="skill-number">04</span><h3>研究与协作</h3><p>用户调研、需求挖取、跨方沟通、团队协作与执行复盘</p><div class="skill-line"><i data-level="90"></i></div></article>
+        </div>
+        <div class="cert-row reveal"><span>英语 CET-4</span><span>普通话二级甲等</span><span>C1 驾驶证</span></div>
+      </div>
+    </section>
+
+    <section class="section shell" id="explore" data-section>
+      <div class="section-heading reveal">
+        <div><span class="section-kicker">WORK & EXPLORATION</span><h2>学习与探索</h2></div>
+        <p>展示影像作品与长期运营的个人内容账号。</p>
+      </div>
+      <div class="explore-grid">
+        <div class="work-column">
+          <div class="column-title mint"><span></span><h3>作品展示</h3><small>SELECTED WORK</small></div>
+          <div class="video-showcase">
+            <article class="video-project reveal">
+              <div class="video-frame video-frame-rotated"><video controls preload="metadata" playsinline src="assets/视频作品-01.mp4"></video></div>
+              <div class="video-copy"><span>VIDEO · 01</span><h3>影像作品一</h3><p>个人视频作品展示，项目名称与创作说明可继续补充。</p></div>
+            </article>
+            <article class="video-project reveal">
+              <div class="video-frame"><video class="chunked-video" controls preload="none" playsinline data-parts="assets/视频作品-02.part01|assets/视频作品-02.part02|assets/视频作品-02.part03"></video><button class="video-load-button" type="button">加载并播放作品二</button></div>
+              <div class="video-copy"><span>VIDEO · 02</span><h3>影像作品二</h3><p>个人视频作品展示，项目名称与创作说明可继续补充。</p></div>
+            </article>
+          </div>
+        </div>
+        <div class="notes-column">
+          <div class="column-title coral-title"><span></span><h3>账号展示</h3><small>CHANNELS</small></div>
+          <div class="account-list reveal">
+            <a class="account-card bilibili" href="https://space.bilibili.com/226810061?spm_id_from=333.1007.0.0" target="_blank" rel="noopener noreferrer">
+              <span class="account-icon">B</span><div><small>BILIBILI</small><h3>个人视频账号</h3><p>查看长期运营的视频内容与个人创作。</p></div><b>↗</b>
+            </a>
+            <a class="account-card wechat" href="https://mp.weixin.qq.com/s/a3UFnh2U6Q57bkgMMTjlcQ" target="_blank" rel="noopener noreferrer">
+              <span class="account-icon">文</span><div><small>WECHAT ARTICLE</small><h3>微信公众号文章</h3><p>查看公众号内容创作与文章案例。</p></div><b>↗</b>
+            </a>
+            <a class="account-card channels" href="https://weixin.qq.com/sph/AB6aPpU0Bc" target="_blank" rel="noopener noreferrer">
+              <span class="account-icon">视</span><div><small>WECHAT CHANNELS</small><h3>微信视频号</h3><p>查看视频号内容与短视频作品。</p></div><b>↗</b>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact section-soft">
+      <div class="shell contact-inner reveal">
+        <div><span class="section-kicker">LET'S CONNECT</span><h2>期待一起做出有价值的内容</h2><p>内容运营、产品运营、AI 产品与新媒体相关机会，欢迎联系。</p></div>
+        <div class="contact-links"><a href="mailto:2323527549@qq.com">2323527549@qq.com <span>↗</span></a><span>15723181711</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="shell"><span>© 2026 钟凡</span><a href="#about">回到顶部 ↑</a></div></footer>
+
+  <div class="modal" id="detail-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="detail-title">
+    <div class="modal-panel"><button class="modal-close" type="button" aria-label="关闭">×</button><span class="section-kicker" id="detail-kicker"></span><h2 id="detail-title"></h2><p class="modal-intro" id="detail-intro"></p><div class="modal-grid" id="detail-grid"></div><div class="modal-results" id="detail-results"></div></div>
+  </div>
+
+  <div class="modal" id="match-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="match-title">
+    <div class="modal-panel match-panel"><button class="modal-close" type="button" aria-label="关闭">×</button><span class="section-kicker">AI JOB MATCH</span><h2 id="match-title">岗位匹配分析</h2><div class="match-layout"><div class="score-ring"><strong id="total-score">0</strong><span>%</span><small>综合匹配</small></div><div class="match-bars" id="match-bars"></div></div><div class="match-summary"><div><h3>匹配亮点</h3><ul id="match-highlights"></ul></div><div><h3>分析建议</h3><p id="match-advice"></p></div></div></div>
+  </div>
+
+  <script>
+const details = {
+  "ai-product": {
+    kicker: "2026.04 — 2026.08 · CONTENT / PRODUCT",
+    title: "绝绝智科技有限公司",
+    intro: "围绕 AI 产品进行内容运营与产品运营协作，从市场预热延伸到用户需求洞察。",
+    blocks: [
+      ["内容预热", "借助 AI 工具，在不同内容平台持续输出产品相关内容。"],
+      ["产品推广", "围绕目标用户与产品卖点，配合上线节奏完成传播预热。"],
+      ["用户调研", "协助产品经理开展用户沟通，收集使用场景与真实反馈。"],
+      ["需求挖取", "整理问题与需求，为产品迭代和运营策略提供参考。"]
+    ],
+    result: "<p class=\"result-description\">内容运营成果草稿，用 libTV 生成一段简短视频，但项目暂停因此未完善。</p><div class=\"result-media single-video\"><figure><video class=\"chunked-video\" controls preload=\"none\" playsinline data-parts=\"assets/绝绝智-7月16日.part01|assets/绝绝智-7月16日.part02|assets/绝绝智-7月16日.part03|assets/绝绝智-7月16日.part04\"></video><button class=\"video-load-button\" type=\"button\">加载并播放成果视频</button><figcaption>AI 产品内容运营作品草稿 · 7月16日</figcaption></figure></div>"
+  },
+  "doctor-ip": {
+    kicker: "2025.09 — 2026.03 · NEW MEDIA",
+    title: "重庆松山医院 · 医生 IP 运营",
+    intro: "独立运营视频号“逆糖胡主任”与微信公众号“逆糖胡渊”，连接专业医疗知识、医生个人品牌与科室业务目标。",
+    blocks: [
+      ["账号运营", "负责双平台内容规划、日常发布与账号维护。"],
+      ["选题策划", "围绕患者关注的问题完成健康科普选题与内容表达。"],
+      ["内容制作", "推动视频与图文内容从策划、制作到上线。"],
+      ["效果复盘", "关注浏览、互动与门诊转化，持续优化内容方向。"]
+    ],
+    result: "<div class=\"result-summary\"><strong>单篇最高浏览量近 3w</strong><span>工作期间促进科室门诊量翻倍</span></div><div class=\"result-media result-gallery\"><figure><img src=\"assets/松山医院-成果01.png\" alt=\"松山医院内容成果：升糖巨快的4种蔬菜，浏览量22480\"><figcaption>“升糖巨快的4种蔬菜” · 22,480 浏览</figcaption></figure><figure><img src=\"assets/松山医院-成果02.png\" alt=\"松山医院内容成果：5种隐藏的降糖家务，浏览量10033\"><figcaption>“5种隐藏的降糖家务” · 10,033 浏览</figcaption></figure><figure><img src=\"assets/松山医院-成果03.png\" alt=\"松山医院内容成果：4个无意识升糖行为，浏览量29451\"><figcaption>“4个无意识升糖行为” · 29,451 浏览</figcaption></figure></div>"
+  },
+  bosideng: {
+    kicker: "2023.03 — 2023.05 · SOCIAL MEDIA",
+    title: "波司登 · 重庆区域新媒体运营",
+    intro: "参与品牌在重庆区域的小红书内容、达人合作、员工社媒社群与会员活动传播。",
+    blocks: [
+      ["账号内容", "参与重庆小红书账号的内容运营与日常维护。"],
+      ["KOL 合作", "协助达人合作管理与传播执行。"],
+      ["社群管理", "维护店员社交媒体账号相关社群。"],
+      ["线下活动", "参与会员活动组织和现场视频拍摄制作。"]
+    ],
+    result: null
+  }
+};
+
+const navLinks = [...document.querySelectorAll(".nav-links a")];
+const sections = [...document.querySelectorAll("[data-section]")];
+const menuToggle = document.querySelector(".menu-toggle");
+const navMenu = document.querySelector(".nav-links");
+
+menuToggle.addEventListener("click", () => {
+  const open = navMenu.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded", String(open));
+});
+
+navLinks.forEach((link) => link.addEventListener("click", () => {
+  navMenu.classList.remove("open");
+  menuToggle.setAttribute("aria-expanded", "false");
+}));
+
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+    navLinks.forEach((link) => link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`));
+  });
+}, { rootMargin: "-35% 0px -55%", threshold: 0 });
+sections.forEach((section) => sectionObserver.observe(section));
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add("visible");
+    entry.target.querySelectorAll(".skill-line i").forEach((bar) => { bar.style.width = `${bar.dataset.level}%`; });
+    revealObserver.unobserve(entry.target);
+  });
+}, { threshold: .12 });
+document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
+
+function openModal(modal) {
+  modal.classList.add("open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  modal.querySelector(".modal-close").focus();
+}
+
+async function loadChunkedVideo(video, button) {
+  if (video.src) return video.play();
+  button.disabled = true;
+  button.textContent = "正在加载视频…";
+  try {
+    const urls = video.dataset.parts.split("|");
+    const responses = await Promise.all(urls.map((url) => fetch(url)));
+    if (responses.some((response) => !response.ok)) throw new Error("视频分片加载失败");
+    const parts = await Promise.all(responses.map((response) => response.arrayBuffer()));
+    video.src = URL.createObjectURL(new Blob(parts, { type: "video/mp4" }));
+    button.remove();
+    await video.play();
+  } catch (error) {
+    button.disabled = false;
+    button.textContent = "加载失败，请重试";
+  }
+}
+
+document.addEventListener("click", (event) => {
+  const button = event.target.closest(".video-load-button");
+  if (!button) return;
+  loadChunkedVideo(button.parentElement.querySelector(".chunked-video"), button);
+});
+
+function closeModal(modal) {
+  modal.classList.remove("open");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+document.querySelectorAll(".modal").forEach((modal) => {
+  modal.querySelector(".modal-close").addEventListener("click", () => closeModal(modal));
+  modal.addEventListener("click", (event) => { if (event.target === modal) closeModal(modal); });
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") document.querySelectorAll(".modal.open").forEach(closeModal);
+});
+
+const detailModal = document.querySelector("#detail-modal");
+document.querySelectorAll(".details-button").forEach((button) => {
+  button.addEventListener("click", () => {
+    const item = details[button.dataset.detail];
+    document.querySelector("#detail-kicker").textContent = item.kicker;
+    document.querySelector("#detail-title").textContent = item.title;
+    document.querySelector("#detail-intro").textContent = item.intro;
+    document.querySelector("#detail-grid").innerHTML = item.blocks.map(([title, body]) => `<article class="detail-block"><h3>${title}</h3><p>${body}</p></article>`).join("");
+    const results = document.querySelector("#detail-results");
+    results.hidden = !item.result;
+    results.innerHTML = item.result ? `<h3>核心成果</h3>${item.result}` : "";
+    openModal(detailModal);
+  });
+});
+
+document.querySelectorAll(".project-button").forEach((button) => {
+  button.addEventListener("click", () => {
+    document.querySelector("#detail-kicker").textContent = "PORTFOLIO PLACEHOLDER";
+    document.querySelector("#detail-title").textContent = button.dataset.project;
+    document.querySelector("#detail-intro").textContent = "作品材料补充后，这里将成为完整的案例详情页。";
+    document.querySelector("#detail-grid").innerHTML = ["项目背景", "个人角色", "执行过程", "关键成果"].map((title) => `<article class="detail-block"><h3>${title}</h3><p>内容待补充</p></article>`).join("");
+    document.querySelector("#detail-results").innerHTML = '<div class="empty-hint"><strong>等待作品图片、项目介绍与成果数据</strong></div>';
+    openModal(detailModal);
+  });
+});
+
+const matchModal = document.querySelector("#match-modal");
+const keywordGroups = {
+  "内容运营": ["内容", "新媒体", "小红书", "视频号", "公众号", "文案", "选题", "短视频", "账号"],
+  "产品协作": ["产品", "需求", "用户调研", "用户研究", "迭代", "反馈", "推广"],
+  "工具能力": ["AI", "剪映", "PS", "PR", "Office", "Excel", "摄影", "摄像"],
+  "沟通执行": ["沟通", "协作", "项目", "执行", "复盘", "跨部门", "社群"]
+};
+
+document.querySelector("#match-button").addEventListener("click", () => {
+  const jd = document.querySelector("#job-description").value.trim();
+  const scores = Object.entries(keywordGroups).map(([name, keywords]) => {
+    const hits = keywords.filter((keyword) => jd.toLowerCase().includes(keyword.toLowerCase()));
+    const base = jd ? 78 : 65;
+    return { name, hits, score: Math.max(65, Math.min(98, base + hits.length * 5)) };
+  });
+  const total = Math.max(65, Math.min(98, Math.round(scores.reduce((sum, item) => sum + item.score, 0) / scores.length)));
+  document.querySelector("#total-score").textContent = total;
+  document.querySelector("#match-bars").innerHTML = scores.map((item) => `<div class="bar-row"><b>${item.name}</b><div class="bar-track"><div class="bar-fill" data-score="${item.score}"></div></div><span>${item.score}</span></div>`).join("");
+  const hitNames = scores.filter((item) => item.hits.length).map((item) => `${item.name}：${item.hits.slice(0, 3).join("、")}`);
+  document.querySelector("#match-highlights").innerHTML = (hitNames.length ? hitNames : ["请粘贴完整岗位描述，以识别更多匹配关键词"]).map((item) => `<li>${item}</li>`).join("");
+  document.querySelector("#match-advice").textContent = jd ? "当前结果基于简历能力与岗位关键词进行前端演示匹配。正式投递前，建议结合岗位职责补充对应作品与量化成果。" : "尚未输入岗位描述，当前显示基础能力画像。粘贴 JD 后可获得更有针对性的结果。";
+  openModal(matchModal);
+  requestAnimationFrame(() => document.querySelectorAll(".bar-fill").forEach((bar) => { bar.style.width = `${bar.dataset.score}%`; }));
+});
+
+</script>
+</body>
+</html>
