@@ -107,6 +107,14 @@ textarea:focus { border-color: var(--mint-dark); box-shadow: 0 0 0 3px rgba(125,
 
 .experience-list { border-top: 1px solid var(--line); }
 .experience-card { position: relative; display: grid; grid-template-columns: 64px 1fr auto; gap: 28px; padding: 38px 0; border-bottom: 1px solid var(--line); }
+.experience-group { margin: 30px 0 8px; padding: 6px 0 0 28px; border-left: 3px solid var(--mint-dark); }
+.group-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 14px; padding: 8px 0 4px; }
+.group-head h3 { margin: 0; font-size: 23px; }
+.group-head small { color: #8b908a; font-size: 11px; letter-spacing: 1.5px; }
+.group-head span { color: #6d726c; font-size: 13px; }
+.experience-group .experience-card:last-child { border-bottom: 0; }
+.item-dept { display: inline-block; margin: 0 0 6px; padding: 1px 10px; border-radius: 999px; background: var(--soft); color: #5c625b; font-size: 13px; font-weight: 600; }
+@media (max-width: 700px) { .experience-group { padding-left: 14px; } }
 .experience-card.featured { margin: 0 -28px; padding: 38px 28px; background: #f7fbf8; border: 1px solid #d8e8df; border-radius: 8px; }
 .experience-index { color: var(--mint-dark); font-size: 12px; font-weight: 800; }
 .experience-main > p { max-width: 780px; color: var(--muted); }
@@ -179,6 +187,8 @@ textarea:focus { border-color: var(--mint-dark); box-shadow: 0 0 0 3px rgba(125,
 .account-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; font-weight: 800; }
 .account-card.bilibili .account-icon { background: var(--sky); color: #2f699b; }
 .account-card.wechat .account-icon { background: #d9f3e7; color: #21664c; }
+.account-card.compact { min-height: 0; margin-top: 14px; }
+.account-card.douyin .account-icon { background: #ffe1da; color: #b4472f; }
 .account-card.channels .account-icon { background: var(--lavender); color: #5a468f; }
 .account-card small { color: var(--purple); font-size: 9px; font-weight: 800; letter-spacing: 1px; }
 .account-card h3 { margin: 3px 0 4px; font-size: 18px; }
@@ -218,6 +228,7 @@ footer .shell { display: flex; justify-content: space-between; }
 .detail-block:nth-child(4n+1) { background: var(--sky); }
 .detail-block:nth-child(4n+2) { background: #dff4e9; }
 .detail-block:nth-child(4n+3) { background: var(--lemon); }
+.detail-block:nth-child(4n+4) { background: var(--lavender); }
 .detail-block h3 { font-size: 15px; }
 .detail-block p { margin: 0; color: var(--muted); font-size: 13px; }
 .modal-results { padding: 22px; border-left: 4px solid var(--mint-dark); background: var(--soft); }
@@ -403,25 +414,28 @@ footer .shell { display: flex; justify-content: space-between; }
         <p>聚焦内容生产、账号增长、用户研究与 AI 产品推广，把传播结果落到业务目标上。</p>
       </div>
       <div class="experience-list">
+        <div class="experience-group reveal">
+        <div class="group-head"><h3>华邦生命健康集团</h3><small>HUABANG LIFE HEALTH GROUP</small><span>以下两段为集团旗下不同公司主体的工作经历</span></div>
         <article class="experience-card reveal">
           <div class="experience-index">01</div>
           <div class="experience-main">
-            <div class="item-top"><div><h3>绝绝智科技有限公司</h3><p class="item-role">内容运营 / 产品运营实习</p></div><time>2026.04 — 2026.08</time></div>
-            <p>围绕 AI 产品开展内容预热与多平台推广，并协助产品经理完成用户调研、需求挖取和反馈整理。</p>
-            <div class="tags"><span>AI 产品</span><span>内容预热</span><span>用户调研</span><span>需求洞察</span></div>
+            <div class="item-top"><div><h3>绝绝智科技有限公司</h3><p class="item-dept">AI与数字赋能中心</p><p class="item-role">内容运营 / 产品运营实习</p></div><time>2026.08 — 2026.11</time></div>
+            <p>参与产品用户调研；借助 AI 工具输出内容，运营小红书账号 @敲代码的阿哲 与抖音账号 @小兔阿团；使用即梦等视频制作工具产出系列图片及短视频作品。</p>
+            <div class="tags"><span>用户调研</span><span>AI 内容生产</span><span>小红书</span><span>抖音</span><span>AIGC 视频</span></div>
           </div>
           <button class="text-link details-button" type="button" data-detail="ai-product">查看详情 <span>↗</span></button>
         </article>
         <article class="experience-card reveal featured">
           <div class="experience-index">02</div>
           <div class="experience-main">
-            <div class="item-top"><div><h3>重庆松山医院</h3><p class="item-role">新媒体运营实习</p></div><time>2025.09 — 2026.03</time></div>
+            <div class="item-top"><div><h3>重庆松山医院</h3><p class="item-dept">品牌推广部</p><p class="item-role">新媒体运营实习</p></div><time>2025.09 — 2026.07</time></div>
             <p>独立运营医生 IP 视频号“逆糖胡主任”及微信公众号“逆糖胡渊”，以专业内容连接医生品牌与患者需求。</p>
             <div class="result-strip"><strong>3w</strong><span>单篇最高浏览量</span><strong>2×</strong><span>科室门诊量增长</span></div>
             <div class="tags"><span>医生 IP</span><span>视频号</span><span>公众号</span><span>内容增长</span></div>
           </div>
           <button class="text-link details-button" type="button" data-detail="doctor-ip">查看详情 <span>↗</span></button>
         </article>
+        </div>
         <article class="experience-card reveal">
           <div class="experience-index">03</div>
           <div class="experience-main">
@@ -460,12 +474,16 @@ footer .shell { display: flex; justify-content: space-between; }
           <div class="column-title mint"><span></span><h3>作品展示</h3><small>SELECTED WORK</small></div>
           <div class="video-showcase">
             <article class="video-project reveal">
-              <div class="video-frame video-frame-rotated"><video controls preload="metadata" playsinline src="assets/视频作品-01.mp4"></video></div>
+              <div class="video-frame video-frame-rotated"><video controls preload="metadata" playsinline src="assets/视频作品-01.mp4#t=0.1"></video></div>
               <div class="video-copy"><span>VIDEO · 01</span><h3>影像作品一</h3><p>个人视频作品展示，项目名称与创作说明可继续补充。</p></div>
             </article>
             <article class="video-project reveal">
-              <div class="video-frame"><video class="chunked-video" controls preload="none" playsinline data-parts="assets/视频作品-02.part01|assets/视频作品-02.part02|assets/视频作品-02.part03"></video><button class="video-load-button" type="button">加载并播放作品二</button></div>
+              <div class="video-frame"><video controls preload="metadata" playsinline src="assets/视频作品-02.mp4#t=0.1"></video></div>
               <div class="video-copy"><span>VIDEO · 02</span><h3>影像作品二</h3><p>个人视频作品展示，项目名称与创作说明可继续补充。</p></div>
+            </article>
+            <article class="video-project reveal">
+              <div class="video-frame"><video controls preload="metadata" playsinline src="assets/视频作品-03.mp4#t=0.1"></video></div>
+              <div class="video-copy"><span>VIDEO · 03</span><h3>影像作品三</h3><p>抖音账号 @小兔阿团 的 AI 短视频作品 · 11月6日。</p></div>
             </article>
           </div>
         </div>
@@ -477,6 +495,9 @@ footer .shell { display: flex; justify-content: space-between; }
             </a>
             <a class="account-card wechat" href="https://mp.weixin.qq.com/s/a3UFnh2U6Q57bkgMMTjlcQ" target="_blank" rel="noopener noreferrer">
               <span class="account-icon">文</span><div><small>WECHAT ARTICLE</small><h3>微信公众号文章</h3><p>查看公众号内容创作与文章案例。</p></div><b>↗</b>
+            </a>
+            <a class="account-card douyin" href="https://v.douyin.com/P5Z5Lz71MlE/" target="_blank" rel="noopener noreferrer">
+              <span class="account-icon">抖</span><div><small>DOUYIN</small><h3>抖音 @小兔阿团</h3><p>查看 AI 短视频作品与账号日常运营内容。</p></div><b>↗</b>
             </a>
             <a class="account-card channels" href="https://weixin.qq.com/sph/AB6aPpU0Bc" target="_blank" rel="noopener noreferrer">
               <span class="account-icon">视</span><div><small>WECHAT CHANNELS</small><h3>微信视频号</h3><p>查看视频号内容与短视频作品。</p></div><b>↗</b>
@@ -507,19 +528,19 @@ footer .shell { display: flex; justify-content: space-between; }
   <script>
 const details = {
   "ai-product": {
-    kicker: "2026.04 — 2026.08 · CONTENT / PRODUCT",
+    kicker: "2026.08 — 2026.11 · 华邦生命健康集团 · AI与数字赋能中心",
     title: "绝绝智科技有限公司",
-    intro: "围绕 AI 产品进行内容运营与产品运营协作，从市场预热延伸到用户需求洞察。",
+    intro: "在华邦生命健康集团 AI与数字赋能中心，参与产品用户调研，并用 AI 工具完成多平台内容生产与账号运营。",
     blocks: [
-      ["内容预热", "借助 AI 工具，在不同内容平台持续输出产品相关内容。"],
-      ["产品推广", "围绕目标用户与产品卖点，配合上线节奏完成传播预热。"],
-      ["用户调研", "协助产品经理开展用户沟通，收集使用场景与真实反馈。"],
-      ["需求挖取", "整理问题与需求，为产品迭代和运营策略提供参考。"]
+      ["用户调研", "参与产品用户调研，收集使用场景与真实反馈。"],
+      ["小红书运营", "借助 AI 工具输出内容，运营小红书账号 @敲代码的阿哲。"],
+      ["抖音运营", "负责抖音账号 @小兔阿团 的内容输出与日常运营。"],
+      ["AIGC 创作", "使用即梦等视频制作工具，产出系列图片及短视频作品。"]
     ],
-    result: "<p class=\"result-description\">内容运营成果草稿，用 libTV 生成一段简短视频，但项目暂停因此未完善。</p><div class=\"result-media single-video\"><figure><video class=\"chunked-video\" controls preload=\"none\" playsinline data-parts=\"assets/绝绝智-7月16日.part01|assets/绝绝智-7月16日.part02|assets/绝绝智-7月16日.part03|assets/绝绝智-7月16日.part04\"></video><button class=\"video-load-button\" type=\"button\">加载并播放成果视频</button><figcaption>AI 产品内容运营作品草稿 · 7月16日</figcaption></figure></div>"
+    result: "<p class=\"result-description\">抖音账号 @小兔阿团 由我负责内容输出与日常运营，点击下方卡片可查看主页作品。</p><a class=\"account-card douyin compact\" href=\"https://v.douyin.com/P5Z5Lz71MlE/\" target=\"_blank\" rel=\"noopener noreferrer\"><span class=\"account-icon\">抖</span><div><small>DOUYIN</small><h3>@小兔阿团</h3><p>查看抖音主页与短视频作品。</p></div><b>↗</b></a>"
   },
   "doctor-ip": {
-    kicker: "2025.09 — 2026.03 · NEW MEDIA",
+    kicker: "2025.09 — 2026.07 · 华邦生命健康集团 · 品牌推广部",
     title: "重庆松山医院 · 医生 IP 运营",
     intro: "独立运营视频号“逆糖胡主任”与微信公众号“逆糖胡渊”，连接专业医疗知识、医生个人品牌与科室业务目标。",
     blocks: [
